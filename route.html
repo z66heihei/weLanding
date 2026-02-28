@@ -52,40 +52,6 @@
       color: #cbd5f5;
       font-size: 13px;
     }
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(2,6,23,0.88);
-      display: none;
-      z-index: 9999;
-    }
-    .overlay.show { display: block; }
-    .hand {
-      position: absolute;
-      top: 12px;
-      right: 10px;
-      color: #fff;
-      font-size: 14px;
-      text-align: right;
-      width: 160px;
-    }
-    .arrow {
-      position: absolute;
-      top: 46px;
-      right: 18px;
-      width: 64px;
-      height: 64px;
-      border: 2px solid #fff;
-      border-color: transparent #fff #fff transparent;
-      transform: rotate(-45deg);
-      border-radius: 6px;
-      animation: pulse 1.6s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 0.3; transform: rotate(-45deg) scale(0.9); }
-      50% { opacity: 1; transform: rotate(-45deg) scale(1.05); }
-      100% { opacity: 0.3; transform: rotate(-45deg) scale(0.9); }
-    }
     .badge {
       display: inline-block;
       padding: 2px 8px;
@@ -143,18 +109,12 @@
     </div>
   </div>
 
-  <div class="overlay" id="overlay">
-    <div class="hand">点击右上角“⋯”<br/>选择浏览器打开</div>
-    <div class="arrow"></div>
-  </div>
-
   <script>
     (function () {
       var targetUrl = "https://onearths.shop/oeckn7/3sEspcwvpjNgQlIKnhDWwm";
       var ua = navigator.userAgent.toLowerCase();
       var isWeChat = ua.indexOf("micromessenger") !== -1;
 
-      var overlay = document.getElementById("overlay");
       var statusEl = document.getElementById("status");
       var wechatGuide = document.getElementById("wechat-guide");
       var browserTip = document.getElementById("browser-tip");
@@ -165,7 +125,6 @@
       if (isWeChat) {
         statusEl.textContent = "请在浏览器中打开";
         wechatGuide.style.display = "block";
-        overlay.classList.add("show");
 
         copyBtn.addEventListener("click", function () {
           if (navigator.clipboard && navigator.clipboard.writeText) {
