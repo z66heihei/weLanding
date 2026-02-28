@@ -106,15 +106,12 @@
       font-weight: 600;
       border: none;
       cursor: pointer;
-      text-decoration: none;
-    }
-    .btn.secondary {
-      background: transparent;
-      color: var(--fg);
-      border: 1px solid rgba(255,255,255,0.25);
-      margin-left: 8px;
     }
     .btn:active { transform: translateY(1px); }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+    }
     .countdown {
       margin-top: 10px;
       font-size: 13px;
@@ -134,14 +131,15 @@
         <li>1. 点击右上角“⋯”更多</li>
         <li>2. 选择“在浏览器中打开”</li>
       </ul>
-      <button class="btn" id="copy-btn">复制链接</button>
+      <div class="btn-row">
+        <button class="btn" id="copy-btn">复制链接</button>
+      </div>
       <p class="tip" id="copy-tip">如果看不到“在浏览器中打开”，请选择“复制链接”，再粘贴到浏览器访问。</p>
     </div>
 
     <div id="browser-tip" style="display:none;">
       <p>将为你自动跳转到落地页。</p>
       <div class="countdown">倒计时 <span id="seconds">2</span> 秒…</div>
-      <a class="btn secondary" id="manual-open" href="#" target="_blank" rel="noopener">手动打开链接</a>
     </div>
   </div>
 
@@ -163,9 +161,6 @@
       var secondsEl = document.getElementById("seconds");
       var copyBtn = document.getElementById("copy-btn");
       var copyTip = document.getElementById("copy-tip");
-      var manualOpen = document.getElementById("manual-open");
-
-      manualOpen.href = targetUrl;
 
       if (isWeChat) {
         statusEl.textContent = "请在浏览器中打开";
